@@ -14,7 +14,8 @@ FONT_NAME = "Courier"
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
-SLEEP_TIME = 1000
+SLEEP_TIME = 1
+SLEEP_TIME = 0.0005
 POMODORO_LENGTH = "25:00"
 
 path = os.path.dirname(os.path.realpath(__file__))
@@ -47,11 +48,15 @@ def count_down():
         value = timer_value.get()
         min_, sec_ = value[0:2], value[3:]
         if value == "00:00":
-            notify("Pomodoro: Break Time!")
-            timer_value.set(POMODORO_LENGTH)
             tick = tick_value.get()
             tick += "✓"
             tick_value.set(tick)
+            timer_value.set(POMODORO_LENGTH)
+            is_running.set("no")
+            if len(tick) % 4 == 0:
+                notify("Pomodoro: Long break Time!")
+            else:
+                notify("Pomodoro: Short break Time!")
             return
         elif sec_ == "00":
             min_ = int(min_) - 1
@@ -65,7 +70,7 @@ def count_down():
 def pomodoro_timer():
     while True:
         count_down()
-        sleep(1)
+        sleep(SLEEP_TIME)
 
 
 root = Tk()
