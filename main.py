@@ -15,7 +15,6 @@ WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 SLEEP_TIME = 1
-SLEEP_TIME = 0.0005
 POMODORO_LENGTH = "25:00"
 
 path = os.path.dirname(os.path.realpath(__file__))
