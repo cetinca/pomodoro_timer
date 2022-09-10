@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import json
 import os
 from threading import Thread
@@ -72,7 +74,7 @@ def pomodoro_timer():
 root = Tk()
 root.title("Pomodoro Timer")
 root.config(bg=YELLOW)
-root.geometry("300x325")
+root.geometry("325x325")
 root.protocol("WM_DELETE_WINDOW", save_pomodoro)
 root.resizable(False, False)
 
@@ -84,7 +86,7 @@ is_running = StringVar(value="no")
 t = Thread(daemon=True, target=pomodoro_timer)
 t.start()
 
-canvas = Canvas(master=root, width=300, height=325, bg=YELLOW, highlightthickness=0)
+canvas = Canvas(master=root, width=325, height=325, bg=YELLOW, highlightthickness=0)
 image = PhotoImage(file=f"{path}/tomato.png")
 canvas.create_image(150, 150, image=image, anchor='center')
 canvas.pack(expand=True, fill="both")
