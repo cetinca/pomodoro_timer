@@ -6,8 +6,6 @@ from threading import Thread
 from time import sleep
 from tkinter import *
 
-from playsound import playsound
-
 from notify_me import notify
 
 PINK = "#FF00FF"
@@ -53,7 +51,6 @@ def count_down():
             tick_value.set(tick)
             timer_value.set(POMODORO_LENGTH)
             is_running.set("no")
-            playsound("beep-07a.mp3")
             if len(tick) % 4 == 0:
                 notify("Pomodoro: Long break Time!")
             else:
